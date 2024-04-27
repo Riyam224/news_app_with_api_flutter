@@ -5,34 +5,52 @@ import 'package:news_app_/services/news_service.dart';
 import 'package:news_app_/widgets/news_list.dart';
 
 class NewsListBuilder extends StatefulWidget {
-  const NewsListBuilder({super.key});
-
   @override
   State<NewsListBuilder> createState() => _NewsListBuilderState();
 }
 
 class _NewsListBuilderState extends State<NewsListBuilder> {
-  //
   List<ArticleModel> articles = [];
+  var futur;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getGeneralNews();
-  }
-
-  Future<void> getGeneralNews() async {
-    articles = await NewsService(Dio()).getNews();
-    setState(() {});
+    futur = NewsService(Dio()).getNews();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: articles.length,
-        itemBuilder: (context, index) {
-          return NewsList(articles: articles[index]);
-        });
+    return FutureBuilder<List<ArticleModel>>(
+      future: futur,
+      builder: (context, snapshot) {
+        articles = snapshot.data ?? [];
+        if (snapshot.hasData) {
+          return SliverList(
+              delegate: SliverChildBuilderDelegate(
+                  childCount: snapshot.data!.length, (context, index) {
+            return NewsList(articles: snapshot.data![index]);
+          }));
+        } else if (snapshot.hasError) {
+          return const SliverToBoxAdapter(
+            child: Center(
+              child: Column(
+                children: [
+                  Icon(Icons.warning_amber_sharp),
+                  Text('Ooops there is an error :( '),
+                ],
+              ),
+            ),
+          );
+        } else {
+          return const SliverToBoxAdapter(
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
+    );
   }
 }

@@ -10,7 +10,7 @@ class NewsService {
   Future<List<ArticleModel>> getNews() async {
     try {
       Response response = await dio.get(
-          "https://newsapi.org/v2/top-headlines?country=us&apiKey=dbbdee32c9f143bb9408f91c1d2cc578&category=sports");
+          "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=dbbdee32c9f143bb9408f91c1d2cc578");
       Map<String, dynamic> jsonData = response.data;
       List<dynamic> articles = jsonData["articles"];
       List<ArticleModel> articleList = [];

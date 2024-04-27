@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app_/models/article_model.dart';
 
-class NewsList extends StatelessWidget {
-  const NewsList({super.key, required this.articles});
+class NewsTile extends StatelessWidget {
+  const NewsTile({super.key, required this.articles});
 
   final ArticleModel articles;
 
