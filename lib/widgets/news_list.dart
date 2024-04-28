@@ -16,10 +16,11 @@ class NewsList extends StatelessWidget {
           //
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
+            // todo
             child: CachedNetworkImage(
               imageUrl: articles.image,
               placeholder: (context, url) => const CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Image.network(
+              errorWidget: (context, url, error) => Image.asset(
                 'assets/images/image_not_found.png',
                 fit: BoxFit.cover,
               ),

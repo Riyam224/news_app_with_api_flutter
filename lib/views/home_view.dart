@@ -29,19 +29,21 @@ class HomeView extends StatelessWidget {
                   ))
             ]))),
         // todo
-        body: CustomScrollView(
+        body: const CustomScrollView(
           shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           slivers: [
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: CategoryListView(),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: SizedBox(
                 height: 20,
               ),
             ),
-            NewsListBuilder()
+            NewsListBuilder(
+              category: 'general',
+            )
           ],
         ));
   }
