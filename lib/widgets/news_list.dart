@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app_/models/article_model.dart';
+import 'package:news_app_/views/web_view.dart';
 
 class NewsList extends StatelessWidget {
   const NewsList({super.key, required this.articles});
@@ -29,13 +30,22 @@ class NewsList extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: Text(
-              articles.title,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            // todo
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WebViewPage(url: articles.url)));
+              },
+              child: Text(
+                articles.title,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

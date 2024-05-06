@@ -17,13 +17,21 @@ class NewsService {
       for (var article in articles) {
         if (article['urlToImage'] == null ||
             article["description"] == null ||
-            article["title"] == null) {
+            article["title"] == null ||
+            // todo
+            article["url"] == null) {
           continue;
         } else {
           ArticleModel model = ArticleModel(
             image: article["urlToImage"],
             subTitle: article["description"],
             title: article["title"],
+            // todo
+            url: article["url"],
+            // todo
+            // content: article["content"],
+            // publishedAt: article["publishedAt"],
+            // articleUrl: article["url"],
           );
 
           articleList.add(model);

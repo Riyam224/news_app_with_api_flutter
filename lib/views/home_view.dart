@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
               TextSpan(
                 text: "News",
                 style: TextStyle(
-                  fontSize: 35,
+                  fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
               TextSpan(
                   text: " Cloud",
                   style: TextStyle(
-                    fontSize: 35,
+                    fontSize: 20,
                     color: Colors.orange,
                     fontWeight: FontWeight.bold,
                   ))
