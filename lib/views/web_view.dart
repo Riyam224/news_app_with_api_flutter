@@ -64,7 +64,7 @@ class _WebViewPageState extends State<WebViewPage> {
                 text: " Cloud",
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.orange,
+                  color: Color(0xff974ed9),
                   fontWeight: FontWeight.bold,
                 ))
           ]))),

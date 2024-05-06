@@ -30,7 +30,7 @@ class NewsList extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 10),
-            // todo
+            // todo add webview  to the app
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
